@@ -26,7 +26,8 @@ namespace WishList.Controllers
             return View("Create");
         }
 
-        public IActionResult Create([FromBody] Item item) {
+        public IActionResult Create(Item item) 
+        {
             _context.Items.Add(item);
             _context.SaveChanges();
             return RedirectToAction("Index");
