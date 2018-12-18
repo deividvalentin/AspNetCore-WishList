@@ -14,8 +14,9 @@ namespace WishList.Controllers
             _context = context;
         }
 
-        public IActionResult Index() {
-            var model = _context.Itens.ToList();
+        public IActionResult Index() 
+        {
+            var model = _context.Items.ToList();
 
             return View("Index", model);
         }
@@ -26,14 +27,14 @@ namespace WishList.Controllers
         }
 
         public IActionResult Create([FromBody] Item item) {
-            _context.Itens.Add(item);
+            _context.Items.Add(item);
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
 
         public IActionResult Delete(int id) {
-            var item = _context.Itens.FirstOrDefault(e => e.Id == id);
-            _context.Itens.Remove(item);
+            var item = _context.Items.FirstOrDefault(e => e.Id == id);
+            _context.Items.Remove(item);
             _context.SaveChanges();
             return RedirectToAction("Index");
 
